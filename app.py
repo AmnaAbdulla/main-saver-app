@@ -131,10 +131,9 @@ def compare_images():
 
         first_result = classify_food_image(image_url1)
         second_result = classify_food_image(image_url2, is_second_image=True)
+        final_result = first_result and second_result
 
-        return jsonify({
-            "final_result": first_result and second_result
-        })
+        return jsonify(final_result)
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
